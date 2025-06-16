@@ -12,7 +12,7 @@ import java.net.InetSocketAddress
 /**
  * Simple service for sending and receiving UDP broadcast messages within the local network.
  */
-class UdpBroadcastService(private val port: Int) {
+class UdpBroadcastService(private val port: Int, private val address: InetAddress = InetAddress.getByName("255.255.255.255")) {
     private val socket = DatagramSocket(null)
     private var job: Job? = null
 
@@ -23,7 +23,7 @@ class UdpBroadcastService(private val port: Int) {
 
     fun send(message: String) {
         val data = message.toByteArray()
-        val packet = DatagramPacket(data, data.size, InetAddress.getByName("255.255.255.255"), port)
+        val packet = DatagramPacket(data, data.size, address, port)
         socket.send(packet)
     }
 
