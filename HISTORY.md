@@ -1,6 +1,7 @@
 # Project History
 
 ## [Unreleased]
+- Enabled AndroidX to fix GitHub Actions build.
 - Added GitHub Actions workflow to build APK and upload it as an artifact.
 - Updated workflow to use `actions/upload-artifact@v4` after deprecation of v3.
 - Introduced Gradle wrapper scripts and ignored the wrapper jar.
