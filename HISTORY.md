@@ -1,6 +1,7 @@
 # Project History
 
 ## [Unreleased]
+- Added simple chat UI and ChatManager with unit test.
 - Enabled AndroidX to fix GitHub Actions build.
 - Updated AndroidManifest for Android 12 compatibility.
 - Bumped Java compatibility to 17 and updated toolchains.
