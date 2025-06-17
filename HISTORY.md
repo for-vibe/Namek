@@ -11,4 +11,6 @@
 - Introduced Gradle wrapper scripts and ignored the wrapper jar.
 - Initial project scaffold for LocalChat Android app.
 - Added best practices for AI agents in `AGENTS.md`.
+- Added e2e test for UDP messaging and fixed crash on message send by declaring INTERNET permission.
+- Display uncaught exceptions in a copyable crash screen before the app exits.
 
