@@ -17,4 +17,5 @@
 - Display uncaught exceptions in a copyable crash screen before the app exits.
 - Implemented basic chat UI using UDP broadcast messages.
 - Fixed NetworkOnMainThreadException by sending UDP messages on a background thread.
+- Telegram step now sends the latest HISTORY entry with the APK.
 
