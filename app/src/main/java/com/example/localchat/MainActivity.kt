@@ -59,7 +59,6 @@ class MainActivity : AppCompatActivity() {
                 val message = ChatMessage(prefs.getString("name", null), text, System.currentTimeMillis())
                 val json = message.toJson()
                 service.send(json)
-                onMessageReceived(InetAddress.getLoopbackAddress(), json)
                 input.text.clear()
             }
         }
@@ -69,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         val msg = ChatMessage.fromJson(json)
         val name = msg.name?.takeIf { it.isNotBlank() } ?: address.hostAddress
         val time = SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(Date(msg.timestamp))
-        val display = "$name: ${'$'}{msg.text} [${'$'}time]"
+        val display = "$name: ${msg.text} [$time]"
         runOnUiThread { adapter.add(display) }
     }
 
