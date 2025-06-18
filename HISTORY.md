@@ -1,6 +1,7 @@
 # Project History
 
 ## [Unreleased]
+- Fixed chat messages showing `$time` and `$text` and removed duplicates by avoiding handling our own broadcasts.
 - Enabled AndroidX to fix GitHub Actions build.
 - Updated AndroidManifest for Android 12 compatibility.
 - Bumped Java compatibility to 17 and updated toolchains.
