@@ -23,9 +23,13 @@ jobs:
       - name: Run unit tests
         if: github.event_name == 'push'
         run: ./gradlew test
+      - name: Copy APK for artifact
+        run: |
+          mkdir -p artifacts
+          cp app/build/outputs/apk/debug/app-debug.apk artifacts/LocalChat.apk
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: LocalChat.apk
+          path: artifacts/LocalChat.apk
 
