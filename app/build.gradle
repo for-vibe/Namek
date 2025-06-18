@@ -19,8 +19,8 @@ android {
         applicationId "com.example.localchat"
         minSdk 21
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -29,6 +29,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+}
+
+// Task to print the current version name for CI scripts
+tasks.register("printVersion") {
+    doLast {
+        println(android.defaultConfig.versionName)
     }
 }
 
