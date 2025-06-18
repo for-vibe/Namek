@@ -5,6 +5,7 @@ LocalChat is an Android application for chatting over a local network using UDP 
 ## Getting Started
 1. Open the project in Android Studio.
 2. Build and run on devices within the same local network.
+3. Use the simple chat screen to send messages that appear on all peers.
 
 ## Development Guidelines
 - Follow the principles in `AGENTS.md`.
