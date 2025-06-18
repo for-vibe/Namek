@@ -13,4 +13,5 @@
 - Added best practices for AI agents in `AGENTS.md`.
 - Added e2e test for UDP messaging and fixed crash on message send by declaring INTERNET permission.
 - Display uncaught exceptions in a copyable crash screen before the app exits.
+- Bumped app version to 1.1 and kept CI artifacts as APK files.
 
