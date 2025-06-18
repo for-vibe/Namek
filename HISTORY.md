@@ -17,4 +17,6 @@
 - Display uncaught exceptions in a copyable crash screen before the app exits.
 - Implemented basic chat UI using UDP broadcast messages.
 - Fixed NetworkOnMainThreadException by sending UDP messages on a background thread.
+- Added username settings drawer, message timestamps, and sender names with IP fallback.
+- Bumped app version to 1.5.
 

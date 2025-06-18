@@ -11,7 +11,7 @@ class UdpBroadcastServiceTest {
     fun sendAndReceive() = runBlocking {
         val service = UdpBroadcastService(9999, InetAddress.getByName("127.0.0.1"))
         var received: String? = null
-        service.startListening { message ->
+        service.startListening { _, message ->
             received = message
         }
         service.send("hello")

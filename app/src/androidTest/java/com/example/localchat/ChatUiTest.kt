@@ -8,6 +8,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import org.hamcrest.CoreMatchers.containsString
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Rule
@@ -25,13 +26,13 @@ class ChatUiTest {
     fun sendMessageShowsInList() {
         onView(withId(R.id.messageInput)).perform(typeText("hi"), closeSoftKeyboard())
         onView(withId(R.id.sendButton)).perform(click())
-        onView(withText("hi")).check(matches(isDisplayed()))
+        onView(withText(containsString("hi"))).check(matches(isDisplayed()))
     }
 
     @Test
     fun receiveMessageShowsInList() {
-        rule.scenario.onActivity { it.onMessageReceived("hello") }
-        onView(withText("hello")).check(matches(isDisplayed()))
+        rule.scenario.onActivity { it.onMessageReceived(java.net.InetAddress.getLoopbackAddress(), ChatMessage(null, "hello", System.currentTimeMillis()).toJson()) }
+        onView(withText(containsString("hello"))).check(matches(isDisplayed()))
     }
 }
 

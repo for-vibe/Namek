@@ -31,14 +31,14 @@ class UdpBroadcastService(private val port: Int, private val address: InetAddres
         }
     }
 
-    fun startListening(onMessage: (String) -> Unit) {
+    fun startListening(onMessage: (InetAddress, String) -> Unit) {
         job = CoroutineScope(Dispatchers.IO).launch {
             val buffer = ByteArray(1024)
             while (true) {
                 val packet = DatagramPacket(buffer, buffer.size)
                 socket.receive(packet)
                 val text = String(packet.data, 0, packet.length)
-                onMessage(text)
+                onMessage(packet.address, text)
             }
         }
     }
