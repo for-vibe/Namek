@@ -16,4 +16,5 @@
 - Added e2e test for UDP messaging and fixed crash on message send by declaring INTERNET permission.
 - Display uncaught exceptions in a copyable crash screen before the app exits.
 - Implemented basic chat UI using UDP broadcast messages.
+- Fixed NetworkOnMainThreadException by sending UDP messages on a background thread.
 

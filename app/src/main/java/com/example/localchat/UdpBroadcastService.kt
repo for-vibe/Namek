@@ -3,6 +3,7 @@ package com.example.localchat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import java.net.DatagramPacket
 import java.net.DatagramSocket
@@ -15,6 +16,7 @@ import java.net.InetSocketAddress
 class UdpBroadcastService(private val port: Int, private val address: InetAddress = InetAddress.getByName("255.255.255.255")) {
     private val socket = DatagramSocket(null)
     private var job: Job? = null
+    private val scope = CoroutineScope(Dispatchers.IO + Job())
 
     init {
         socket.reuseAddress = true
@@ -22,9 +24,11 @@ class UdpBroadcastService(private val port: Int, private val address: InetAddres
     }
 
     fun send(message: String) {
-        val data = message.toByteArray()
-        val packet = DatagramPacket(data, data.size, address, port)
-        socket.send(packet)
+        scope.launch {
+            val data = message.toByteArray()
+            val packet = DatagramPacket(data, data.size, address, port)
+            socket.send(packet)
+        }
     }
 
     fun startListening(onMessage: (String) -> Unit) {
@@ -41,6 +45,7 @@ class UdpBroadcastService(private val port: Int, private val address: InetAddres
 
     fun stop() {
         job?.cancel()
+        scope.cancel()
         socket.close()
     }
 }
